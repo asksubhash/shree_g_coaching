@@ -1,0 +1,25 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    font-size: 14px;
+}
+
+.page-wrapper {
+    padding: 50px;
+}
+
+.table {
+    border-collapse: collapse;
+    border-spacing: 0px;
+    width: 100%;
+}
+
+.table-bordered tr th,
+.table-bordered tr td {
+    border: 1px solid lightgrey;
+}

@@ -1,0 +1,393 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap");
+
+body {
+    color: #212529;
+    position: relative;
+    font-family: "Work Sans", sans-serif;
+}
+
+/* Scrollbar */
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #db077f;
+    border-radius: 6px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #db077f;
+    border-radius: 6px;
+}
+
+html.color-sidebar.sidebarcolor2 .sidebar-wrapper {
+    background-image: unset !important;
+    /* background: #0b0b0b !important; */
+    background-image: linear-gradient(
+        to right bottom,
+        #0e0e0e,
+        #38233e,
+        #792d5b,
+        #c2305f,
+        #ff4747
+    ) !important;
+}
+
+html.color-sidebar .sidebar-header {
+    /* background-color: #0b0b0b !important; */
+}
+
+[class*="sidebar-dark"] .brand-link,
+[class*="sidebar-dark"] .brand-link .pushmenu,
+[class*="sidebar-dark"] .brand-link:hover {
+    color: rgb(255 255 255);
+    font-weight: 800 !important;
+}
+
+[class*="sidebar-dark"] .user-panel {
+    border-bottom: 1px solid #e7e7ff;
+}
+
+[class*="sidebar-dark-"] .sidebar a,
+[class*="sidebar-dark-"] .sidebar a:hover {
+    color: #c4cdd5;
+}
+
+[class*="sidebar-dark"] .brand-link {
+    border-bottom: 1px solid #e7e7ff;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.content-wrapper {
+    background-color: #f5f5f9 !important;
+}
+
+.content-header h1 {
+    font-size: 1.3rem;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.loader {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background: #f1f1f1d1;
+}
+
+.loader-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.loader img {
+    width: 70px;
+}
+
+.showHide {
+    margin-left: calc(var(--bs-border-width) * -1);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.showHide {
+    /* display: flex; */
+    /* align-items: center; */
+    /* padding: 0.375rem 0.75rem; */
+    font-size: 1rem;
+    font-weight: 400;
+    /* line-height: 1.5; */
+    color: var(--bs-body-color);
+    /* text-align: center; */
+    /* white-space: nowrap; */
+    /* background-color: var(--bs-tertiary-bg); */
+    position: absolute;
+    top: 50.6%;
+    right: 12%;
+    border-left: 0px;
+}
+
+.btn-refresh-captcha {
+    background-color: transparent;
+    border-radius: 4px;
+    border: unset;
+    padding: 7px 10px;
+    color: #191919;
+    font-size: 13px;
+    border: 1px solid lightgrey;
+}
+
+.btn-default,
+.btn-default:hover {
+    color: #fff;
+    background-color: #8592a3;
+    border-color: #8592a3;
+    box-shadow: 0 0.125rem 0.25rem 0 rgb(133 146 163 / 40%);
+}
+
+.btn-custom {
+    background-color: #db077f;
+    color: white !important;
+    padding: 6px 19px;
+    border-radius: 6px;
+    /* box-shadow: 0 0.125rem 0.25rem 0 rgb(105 108 255 / 40%); */
+    border-color: #db077f;
+}
+
+.btn-custom:hover,
+.btn-custom:focus {
+    background-color: #db077f;
+    color: white !important;
+
+    border-color: #db077f;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+    cursor: no-drop;
+}
+
+.form-label {
+    font-weight: 600;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #dc0d58 !important;
+    border-color: #dc0d58 !important;
+}
+
+.card-header-light-bg {
+    background: rgb(249 148 161 / 18%) !important;
+    color: white !important;
+}
+
+.card-header-light-bg h6 {
+    /* color: #f52e2e !important; */
+    color: #c92727e0 !important;
+}
+
+.dt-buttons.btn-group > .dt-buttons.btn-group:not(:last-child) > .btn,
+.dt-buttons.btn-group > .btn.dropdown-toggle-split:first-child,
+.dt-buttons.btn-group > .btn:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+.dt-buttons.btn-group > .dt-buttons.btn-group:not(:first-child) > .btn,
+.dt-buttons.btn-group > .btn:nth-child(n + 3),
+.dt-buttons.btn-group > :not(.btn-check) + .btn {
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+}
+
+html.color-sidebar .sidebar-wrapper .metismenu .mm-active > a,
+html.color-sidebar .sidebar-wrapper .metismenu a:active,
+html.color-sidebar .sidebar-wrapper .metismenu a:focus,
+html.color-sidebar .sidebar-wrapper .metismenu a:hover {
+    color: #ff4747;
+    text-decoration: none;
+    background: rgb(255 255 255) !important;
+}
+
+html.color-sidebar .sidebar-wrapper .metismenu .mm-active > a,
+html.color-sidebar .sidebar-wrapper .metismenu a:active,
+html.color-sidebar .sidebar-wrapper .metismenu a:focus,
+html.color-sidebar .sidebar-wrapper .metismenu a:hover {
+    color: #ff4747 !important;
+    font-weight: 600;
+    text-decoration: none;
+    background: rgb(255 255 255 / 15%);
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus {
+    color: #fff;
+    background-color: #db077f;
+    border-color: #db077f;
+}
+
+.active > .page-link,
+.page-link.active {
+    z-index: 3;
+    color: var(--bs-pagination-active-color);
+    background-color: #db077f;
+    border-color: #db077f;
+}
+
+.select2-container {
+    width: 100% !important;
+}
+
+.select2-container .select2-selection--single {
+    height: 35px;
+}
+
+.select2-container--default .select2-selection--single {
+    border: 1px solid #cbcbcb;
+}
+
+.select2-container--default
+    .select2-selection--single
+    .select2-selection__rendered {
+    line-height: 35px;
+}
+
+.admit-card-header {
+    background-color: #db0f0f;
+    padding: 15px 10px;
+    text-align: center;
+    border-radius: 30px 30px 0px 0px;
+}
+
+.admit-card-header .admit-card-header-img {
+    height: 70px;
+    object-fit: contain;
+}
+
+.filter_col {
+    padding: 13px;
+    background: #f2f2f2;
+    border-radius: 7px;
+    margin-bottom: 10px;
+}
+
+.fieldset {
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+.legend {
+    float: unset;
+    width: auto;
+    padding: 8px 20px;
+    border-radius: 10px;
+    background-color: #dc0d58;
+    color: white;
+    font-size: 14px;
+}
+
+.question_image {
+    width: 400px;
+}
+
+.question_option_image {
+    height: 100px;
+    object-fit: contain;
+}
+
+.custom-radio {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+/* Hide the default radio button */
+.custom-2-radio {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+}
+
+.custom-2-radio::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.2s ease;
+}
+
+.custom-2-radio:checked::before {
+    background-color: #007bff; /* Change to your preferred active color */
+}
+
+/* Style when checked and disabled */
+.custom-2-radio:checked:disabled {
+    background-color: red;
+    border-color: red;
+}
+
+.custom-2-radio:checked:disabled::before {
+    background-color: white;
+}
+
+/* Style the label associated with the checked and disabled radio button */
+.custom-2-radio:checked:disabled + label {
+    color: red; /* Change label color */
+}
+
+.bg-gray {
+    background-color: #d3d9de;
+}
+
+.bg-light-red {
+    background-color: #ffb3cb;
+}
+
+.start-exam-page {
+    position: relative;
+}
+
+.exam-final-submit-col {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 15;
+    padding: 10px 20px;
+    box-shadow: 0px 0px 3px 0px #414141;
+    background: #fbffd7;
+}
+
+.examCountdown {
+    color: red;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 6px;
+}
