@@ -105,20 +105,6 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <strong class="form-label">Non Language</strong>
-                    </td>
-                    <td>
-                        <div class="mt-2">
-                            @if (count($nonLanguageSubjects) > 0)
-                            @foreach ($nonLanguageSubjects as $key => $ssm)
-                            <span class="subject-chips">{{ $ssm->subject_name }}</span>@if(count($nonLanguageSubjects) > $key+1),@endif
-                            @endforeach
-                            @endif
-                        </div>
-                    </td>
-                </tr>
             </table>
 
         </div>

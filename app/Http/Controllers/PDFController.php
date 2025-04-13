@@ -27,7 +27,6 @@ class PDFController extends Controller
         $view = view('pdf.high_school_student_application', [
             'user' => $data['user'],
             'courseSubjects' => $data['courseSubjects'],
-            'nonLanguageSubjects' => $data['nonLanguageSubjects'],
             'logo' => $data['logo']
         ])->render();
 

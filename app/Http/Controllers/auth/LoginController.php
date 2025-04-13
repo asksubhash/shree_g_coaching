@@ -30,7 +30,7 @@ class LoginController extends Controller
     public function checkLogin(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email_id' => 'required|email',
+            'email_id' => 'required',
             'password' => 'required',
             'captcha' => 'required|captcha'
         ], [

@@ -89,7 +89,7 @@
                                     {{ $studentDetails->st_admission_session }}
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <td>
                                     Language Subjects
                                 </td>
@@ -112,7 +112,7 @@
                                     @endforeach
                                     @endif
                                 </td>
-                            </tr>
+                            </tr> --}}
 
                         </tbody>
                     </table>

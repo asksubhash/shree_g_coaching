@@ -242,7 +242,7 @@ class StudentRegistrationController extends Controller
             'father_name' => 'required|string',
             'mother_name' => 'required|string',
             'gender' => 'required|string',
-            'dob' => 'required',
+            'dob' => 'required|date',
             'religion' => 'required|string',
             'address' => 'required|string',
             'pincode' => 'required|integer',
@@ -295,7 +295,7 @@ class StudentRegistrationController extends Controller
             $user->aadhar_number = $request->aadhar_number;
             $user->created_by = Auth::user()->user_id;
             $user->created_at = now();
-            $user->is_approved = 0;
+            $user->is_approved = 1;
 
 
             // CUSTOM TRAIT: Using the trait function to upload the file
@@ -326,7 +326,7 @@ class StudentRegistrationController extends Controller
                 $user->f_name = $request->name;
                 $user->email_id = $request->email;
                 $user->mobile_no = $request->contact;
-                $user->is_verified = 0;
+                $user->is_verified = 1;
                 $user->created_by = $user_id;
                 $result = $user->save();
 
@@ -339,6 +339,7 @@ class StudentRegistrationController extends Controller
                     $authStore->password = Hash::make($password);
                     $authStore->role_code = "STUDENT";
                     $authStore->created_by = $user_id;
+                    $authStore->save();
                 }
 
                 DB::commit();
@@ -683,11 +684,11 @@ class StudentRegistrationController extends Controller
     public function studentDataTableList(Request $request)
     {
         $query = Student::leftJoin('state_master as sm', 'students.state', '=', 'sm.state_code');
-        $query->leftJoin('payments as pay', "pay.student_application_no", '=', 'students.application_no');
+        // $query->leftJoin('payments as pay', "pay.student_application_no", '=', 'students.application_no');
         $query->select(
             'students.*',
             'sm.state_name',
-            'pay.id as payment_id'
+            // 'pay.id as payment_id'
         );
         if (in_array(auth()->user()->role_code, ['INS_DEO', 'INS_HEAD'])) {
             // Get the institute id
@@ -719,7 +720,7 @@ class StudentRegistrationController extends Controller
 
                 $button = '';
 
-                $button .= "<a href='" . route("student.view", base64_encode($allUsers->id)) . "'class='btn btn-primary btn-sm'  data-toggle='tooltip' data-placement='left' title='View'><i class='bx bx-show'></i></a> <a href='" . url('payment/student/fees/show?payment_id=' . base64_encode($allUsers->payment_id)) . "'class='btn btn-info btn-sm'  data-toggle='tooltip' data-placement='left' title='View'><i class='bx bx-money'></i></a>";
+                // $button .= "<a href='" . route("student.view", base64_encode($allUsers->id)) . "'class='btn btn-primary btn-sm'  data-toggle='tooltip' data-placement='left' title='View'><i class='bx bx-show'></i></a> <a href='" . url('payment/student/fees/show?payment_id=' . base64_encode($allUsers->payment_id)) . "'class='btn btn-info btn-sm'  data-toggle='tooltip' data-placement='left' title='View'><i class='bx bx-money'></i></a>";
 
                 if ($allUsers->is_approved == 0 && Auth::user()->role_code == 'INS_HEAD') {
                     $button .= " <button class='btn btn-success btn-sm approveStudent' id='" . base64_encode($allUsers->id) . "' data-toggle='tooltip' data-placement='left' title='Approve Student'><i class='bx bx-check'></i></button> ";

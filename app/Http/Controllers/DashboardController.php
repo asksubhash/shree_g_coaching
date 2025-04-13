@@ -73,10 +73,7 @@ class DashboardController extends Controller
     public function studentDashboard()
     {
         $username = auth()->user()->username;
-        // echo $username;
-        // die;
         $data = Student::getStudentDetailsUsingRollNo($username);
-
         return view('dashboard.student_dashboard')->with($data);
     }
 }

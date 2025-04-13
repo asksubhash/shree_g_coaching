@@ -45,7 +45,7 @@ class Student extends Model
 
         $query = Student::query();
 
-       
+
         if (in_array($role, ['INS_DEO', 'INS_HEAD'])) {
             $query->whereIn('institute_id', $instituteIdsMapped);
         }
@@ -63,19 +63,19 @@ class Student extends Model
     {
         $data['user'] = Student::leftJoin('state_master as st', 'students.state', '=', 'st.state_code')
             ->leftJoin('institutes as ins', 'students.institute_id', '=', 'ins.id')
-            ->leftJoin('courses as cs', 'students.course', '=', 'cs.id')
-            ->leftJoin('academic_years as ay', 'students.academic_year', '=', 'ay.id')
-            ->leftJoin('admission_sessions as ads', 'students.adm_sesh', '=', 'ads.id')
+            // ->leftJoin('courses as cs', 'students.course', '=', 'cs.id')
+            // ->leftJoin('academic_years as ay', 'students.academic_year', '=', 'ay.id')
+            // ->leftJoin('admission_sessions as ads', 'students.adm_sesh', '=', 'ads.id')
             // ->leftJoin('gen_codes as gd1', 'students.adm_sesh', '=', 'gd1.gen_code')
             ->leftJoin('gen_codes as gd2', 'students.gender', '=', 'gd2.gen_code')
             ->leftJoin('gen_codes as gd3', 'students.religion', '=', 'gd3.gen_code')
             ->leftJoin('gen_codes as gd4', 'students.category', '=', 'gd4.gen_code')
             ->select(
                 'students.*',
-                'ay.academic_year as st_academic_year',
-                'ads.session_name as st_admission_session',
+                // 'ay.academic_year as st_academic_year',
+                // 'ads.session_name as st_admission_session',
                 'ins.name as institute_name',
-                'cs.course_name',
+                // 'cs.course_name',
                 'gd2.description as gender',
                 'gd3.description as religion',
                 'st.state_name',
@@ -88,15 +88,14 @@ class Student extends Model
         //     ->where('student_subject_mappings.student_id', $data['user']->id)
         //     ->get();
 
-        $data['courseSubjects'] = StudentSubjectMapping::getStudentSubjectsUsingStudentId($data['user']->id);
+        $data['courseSubjects'] = []; //StudentSubjectMapping::getStudentSubjectsUsingStudentId($data['user']->id);
 
         // $data['nonLanguageSubjects'] = StudentNLSubjectMapping::select('student_nl_subject_mappings.*', 'sub.name as subject_name')
         //     ->leftJoin('subjects as sub', 'sub.id', '=', 'student_nl_subject_mappings.subject_id')
         //     ->where('student_nl_subject_mappings.student_id', $data['user']->id)
         //     ->get();
 
-        $data['nonLanguageSubjects'] = StudentNLSubjectMapping::getStudentNLSubjectsUsingStudentId($data['user']->id);
-
+     
         return $data;
     }
 
@@ -200,50 +199,44 @@ class Student extends Model
     {
         $data['studentDetails'] = Student::leftJoin('state_master as st', 'students.state', '=', 'st.state_code')
             ->leftJoin('institutes as ins', 'students.institute_id', '=', 'ins.id')
-            ->leftJoin('courses as cs', 'students.course', '=', 'cs.id')
-            ->leftJoin('academic_years as ay', 'students.academic_year', '=', 'ay.id')
-            ->leftJoin('admission_sessions as ads', 'students.adm_sesh', '=', 'ads.id')
-            // ->leftJoin('gen_codes as gd1', 'students.adm_sesh', '=', 'gd1.gen_code')
             ->leftJoin('gen_codes as gd2', 'students.gender', '=', 'gd2.gen_code')
             ->leftJoin('gen_codes as gd3', 'students.religion', '=', 'gd3.gen_code')
             ->leftJoin('gen_codes as gd4', 'students.category', '=', 'gd4.gen_code')
             ->select(
                 'students.*',
-                'ay.academic_year as st_academic_year',
-                'ads.session_name as st_admission_session',
                 'ins.name as institute_name',
-                'cs.course_name',
                 'gd2.description as gender',
                 'gd3.description as religion',
                 'st.state_name',
                 'gd4.description as category',
             )
             ->where([
-                'roll_number' => $rollNumber
+                // 'roll_number' => $rollNumber
+                'application_no' => $rollNumber
             ])->first();
 
         // If graduation, then fetch the data from course subject mapping and course non language subject mapping
-        if ($data['studentDetails']->edu_type == 'GRADUATION') {
-            $data['courseSubjects'] = CourseSubjectMapping::select('course_subject_mappings.*', 'sub.name as subject_name')
-                ->leftJoin('subjects as sub', 'sub.id', '=', 'course_subject_mappings.subject_id')
-                ->where('course_subject_mappings.course_id', $data['studentDetails']->course)
-                ->get();
+        // if ($data['studentDetails']->edu_type == 'GRADUATION') {
+        //     $data['courseSubjects'] = CourseSubjectMapping::select('course_subject_mappings.*', 'sub.name as subject_name')
+        //         ->leftJoin('subjects as sub', 'sub.id', '=', 'course_subject_mappings.subject_id')
+        //         ->where('course_subject_mappings.course_id', $data['studentDetails']->course)
+        //         ->get();
 
-            $data['nonLanguageSubjects'] = CourseNLSubjectMapping::select('course_nl_subject_mappings.*', 'sub.name as subject_name')
-                ->leftJoin('non_language_subjects as sub', 'sub.id', '=', 'course_nl_subject_mappings.subject_id')
-                ->where('course_nl_subject_mappings.course_id', $data['studentDetails']->course)
-                ->get();
-        } else {
-            $data['courseSubjects'] = StudentSubjectMapping::select('student_subject_mappings.*', 'sub.name as subject_name')
-                ->leftJoin('subjects as sub', 'sub.id', '=', 'student_subject_mappings.subject_id')
-                ->where('student_subject_mappings.student_id', $data['studentDetails']->id)
-                ->get();
+        //     $data['nonLanguageSubjects'] = CourseNLSubjectMapping::select('course_nl_subject_mappings.*', 'sub.name as subject_name')
+        //         ->leftJoin('non_language_subjects as sub', 'sub.id', '=', 'course_nl_subject_mappings.subject_id')
+        //         ->where('course_nl_subject_mappings.course_id', $data['studentDetails']->course)
+        //         ->get();
+        // } else {
+        //     $data['courseSubjects'] = StudentSubjectMapping::select('student_subject_mappings.*', 'sub.name as subject_name')
+        //         ->leftJoin('subjects as sub', 'sub.id', '=', 'student_subject_mappings.subject_id')
+        //         ->where('student_subject_mappings.student_id', $data['studentDetails']->id)
+        //         ->get();
 
-            $data['nonLanguageSubjects'] = StudentNLSubjectMapping::select('student_nl_subject_mappings.*', 'sub.name as subject_name')
-                ->leftJoin('subjects as sub', 'sub.id', '=', 'student_nl_subject_mappings.subject_id')
-                ->where('student_nl_subject_mappings.student_id', $data['studentDetails']->id)
-                ->get();
-        }
+        //     $data['nonLanguageSubjects'] = StudentNLSubjectMapping::select('student_nl_subject_mappings.*', 'sub.name as subject_name')
+        //         ->leftJoin('subjects as sub', 'sub.id', '=', 'student_nl_subject_mappings.subject_id')
+        //         ->where('student_nl_subject_mappings.student_id', $data['studentDetails']->id)
+        //         ->get();
+        // }
 
         return $data;
     }

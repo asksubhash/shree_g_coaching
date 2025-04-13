@@ -222,6 +222,7 @@ $(document).ready(function () {
                             feeDetailDataTable.ajax.reload();
                             toastr.success(response.message);
                             resetForm();
+                            $("#feeModal").modal("hide");
                         });
                     } else if (response.status == "validation_errors") {
                         Swal.fire({

@@ -33,7 +33,7 @@
                                         @csrf
                                         <div class="col-12">
                                             <label for="email_id" class="form-label">Email ID</label>
-                                            <input type="email" class="form-control" id="email_id" name="email_id" placeholder="info@example.com">
+                                            <input type="text" class="form-control" id="email_id" name="email_id" placeholder="info@example.com">
                                         </div>
                                         <div class="col-12" id="show_hide_password">
                                             <label for="password" class="form-label">Password</label>
